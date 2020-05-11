@@ -8,6 +8,7 @@ namespace TextFile.Extensions.Configuration.Tests
     public class TextFileConfigurationProviderTests
     {
         public const char DefaultSeparator = ':';
+        public const string DefaultPath = "testFile.txt";
 
         [Theory]
         [InlineData(null)]
@@ -39,7 +40,7 @@ namespace TextFile.Extensions.Configuration.Tests
         [InlineData("Some_Key", "Some_Value")]
         public void Should_Load_Configuration_From_File(string key, string expectedValue)
         {
-            var configurationSource = new TextFileConfigurationSource("testFile.txt", DefaultSeparator);
+            var configurationSource = new TextFileConfigurationSource(DefaultPath, DefaultSeparator);
             var configurationProvider = new TextFileConfigurationProvider(configurationSource);
 
             configurationProvider.Load();
@@ -53,7 +54,7 @@ namespace TextFile.Extensions.Configuration.Tests
         [InlineData("titi:toto", "tata")]
         public void Should_Handle_Custom_Separator(string key, string expectedValue)
         {
-            var configurationSource = new TextFileConfigurationSource("testFile.txt", '.');
+            var configurationSource = new TextFileConfigurationSource(DefaultPath, '.');
             var configurationProvider = new TextFileConfigurationProvider(configurationSource);
 
             configurationProvider.Load();
