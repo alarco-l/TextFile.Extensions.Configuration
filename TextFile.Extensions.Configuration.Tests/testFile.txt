@@ -1,0 +1,6 @@
+toto:tata
+foo:bar
+toto.tata:tutu
+titi:toto.tata
+SomeKey:SomeValue
+Some_Key:Some_Value
